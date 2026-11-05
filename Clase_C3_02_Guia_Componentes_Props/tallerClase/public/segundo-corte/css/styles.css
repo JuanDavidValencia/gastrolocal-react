@@ -1,0 +1,511 @@
+* { 
+    box-sizing: border-box; 
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+:root {
+    --primary: #D35400;
+    --secondary: #F9F4EF;
+    --tertiary: #E67E22;
+    --neutral: #2C3E50;
+}
+
+main {
+  width: 100%;
+  max-width: 1200px; /* Centra el contenido en pantallas grandes */
+  margin: 0 auto;    /* Aplica centrado automático */
+  padding: 0 1rem;   /* <--- ESTO DESPEGA TODO DE LAS ESQUINAS */
+}
+
+/* Banner de inicio */
+#banner-inicio {
+  background-image:linear-gradient(rgba(243, 243, 243, 0.2), rgba(243, 243, 243, 0.2)), url("https://i.pinimg.com/1200x/17/d8/95/17d89508fe4845c8656e9c930125bae7.jpg");
+
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#banner-inicio h1{
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--neutral);
+}
+
+#banner-inicio input[type="text"] {
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary);
+  color: var(--neutral);
+  border: 2px solid var(--primary);
+  border-radius: 100px;
+  outline: none;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.2s ease;
+}
+
+#banner-inicio input[type="text"]:focus {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 8px rgba(211, 84, 0, 0.4);
+}
+
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.tarjeta {
+  flex: 1 1 280px;
+  max-width: 350px;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--secondary);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: 2px solid var(--primary);  
+
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+}
+
+.tarjeta button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: auto;
+}
+
+.tarjeta button:hover {
+  background-color: var(--tertiary);
+}
+
+.tarjeta p:last-of-type {
+  font-weight: bold;
+  color: var(--neutral);
+  margin-top: auto;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary); 
+    color: var(--neutral);
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    padding: 0rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+header h1 a {
+  font-family: 'Quicksand', 'Segoe UI', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 1px;
+  
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+header h1 a:hover {
+  transform: scale(1.05);
+  color: var(--tertiary);
+}
+
+header div button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--secondary);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--neutral);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+section {
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  padding: 1.5rem;
+
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+input, select {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+button[type="submit"] {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* ------------------------------
+   Sesión de usuario (Supabase Auth)
+   ------------------------------ */
+
+/* Garantiza que el atributo hidden siempre oculte el elemento. */
+[hidden] {
+  display: none !important;
+}
+
+.sesion-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sesion-usuario button {
+  margin: 0;
+}
+
+.sesion-usuario img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+/* Avatar de la cabecera en las páginas sin bloque de sesión */
+header div img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+#nombre-usuario {
+  font-weight: bold;
+  color: var(--neutral);
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#estado-auth {
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--neutral);
+  min-height: 1.2rem;
+}
+
+#estado-auth.error {
+  color: #c0392b;
+}
+
+/* ------------------------------
+   CRUD (Clase 10)
+   ------------------------------ */
+
+/* Mensajes de estado de las tres escrituras */
+#estado-perfil,
+#estado-reservas,
+#estado-favoritos {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: var(--neutral);
+  min-height: 1.2rem;
+}
+
+#estado-perfil.error,
+#estado-reservas.error,
+#estado-favoritos.error,
+#estado-auth.error {
+  color: #c0392b;
+}
+
+/* Aviso de "necesitas iniciar sesión" */
+.aviso-sesion {
+  padding: 1rem;
+  border: 2px dashed var(--tertiary);
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--neutral);
+}
+
+.aviso-sesion a {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Panel de perfil (PUT + PATCH) */
+.panel-perfil {
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  background-color: #fff;
+  max-width: 900px;
+}
+
+.perfil-encabezado {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.perfil-encabezado h1 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin: 0;
+}
+
+.perfil-subtitulo {
+  margin: 0.25rem 0 0;
+  color: var(--neutral);
+}
+
+.perfil-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  background-color: var(--secondary);
+  flex-shrink: 0;
+}
+
+/* Dos columnas: datos a la izquierda, foto a la derecha */
+.perfil-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 720px) {
+  .perfil-columnas {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-perfil h2,
+.bloque-foto h2 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+}
+
+.perfil-nota {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin: 0 0 1rem;
+  line-height: 1.4;
+}
+
+.perfil-nota code {
+  background-color: var(--secondary);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Los campos del formulario ocupan todo el ancho de su columna */
+.form-perfil input,
+.bloque-foto input {
+  width: 100%;
+  max-width: none;
+  padding: 0.6rem;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  background-color: var(--secondary);
+  color: var(--neutral);
+  font-size: 1rem;
+}
+
+/* Botones con la misma pastilla que el resto de la aplicación */
+.form-perfil button,
+.bloque-foto button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.form-perfil button:hover,
+.bloque-foto button:hover {
+  background-color: var(--tertiary);
+}
+
+.form-perfil button[type="submit"] {
+  margin-top: 1.5rem;
+}
+
+.perfil-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.perfil-acciones button {
+  margin-top: 1rem;
+}
+
+.bloque-foto .perfil-avatar {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón de quitar un favorito (DELETE) */
+.btn-quitar-favorito {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--tertiary);
+  color: var(--secondary);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.btn-quitar-favorito:hover {
+  background-color: var(--primary);
+}
+
+/* Botón de guardar en favoritos dentro de la tarjeta del restaurante */
+.btn-favorito {
+  margin-top: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-favorito:hover {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+/* Tarjetas de reservas */
+.reserva-datos {
+  color: var(--neutral);
+  margin: 0.25rem 0;
+}
+
+.reserva-estado {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  background-color: var(--secondary);
+  border: 1px solid var(--primary);
+  text-transform: uppercase;
+}
+
+.estado-confirmada {
+  background-color: #d4efdf;
+}
+
+.estado-cancelada {
+  background-color: #fadbd8;
+}
+
+.estado-completada {
+  background-color: #d6eaf8;
+}
+
+/* Tarjeta de favorito */
+.favorito-categoria {
+  color: var(--tertiary);
+  font-weight: bold;
+}
+
+/* Estado vacío de las listas */
+.vacio {
+  padding: 1rem;
+  border: 2px dashed #e0d5cc;
+  border-radius: 8px;
+  color: var(--neutral);
+  text-align: center;
+}
+
+.vacio a {
+  color: var(--primary);
+  font-weight: bold;
+}

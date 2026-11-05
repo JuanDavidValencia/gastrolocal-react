@@ -1,0 +1,314 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Recientemente Vistos - Sabor&amp;Sal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#091d2e",
+                    "surface-bright": "#f7f9ff",
+                    "inverse-surface": "#203243",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#594238",
+                    "background": "#f7f9ff",
+                    "surface-container": "#e3efff",
+                    "on-primary-fixed": "#351000",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#ffb595",
+                    "primary-fixed": "#ffdbcd",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#d9eaff",
+                    "error": "#ba1a1a",
+                    "surface": "#f7f9ff",
+                    "inverse-primary": "#ffb595",
+                    "tertiary-container": "#b55d00",
+                    "on-background": "#091d2e",
+                    "outline": "#8c7166",
+                    "secondary": "#605e5a",
+                    "on-secondary-fixed-variant": "#484643",
+                    "surface-container-highest": "#d1e4fb",
+                    "on-secondary-container": "#666460",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "primary-container": "#c64f00",
+                    "outline-variant": "#e0c0b2",
+                    "secondary-container": "#e6e2dd",
+                    "surface-dim": "#c9dcf3",
+                    "surface-tint": "#a23f00",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d1e4fb",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1d1b19",
+                    "tertiary": "#904800",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#9e3d00",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-low": "#edf4ff",
+                    "on-primary-fixed-variant": "#7c2e00",
+                    "tertiary-fixed": "#ffdcc5",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed-dim": "#cac6c1",
+                    "secondary-fixed": "#e6e2dd",
+                    "on-primary-container": "#fffbff",
+                    "inverse-on-surface": "#e8f2ff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Montserrat"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Montserrat"
+                    ],
+                    "display-lg": [
+                            "Montserrat"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .image-inset { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface-bright shadow-sm docked full-width top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-xl py-base max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight" href="#">GatroLocal</a>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-secondary font-medium hover:text-primary transition-colors hover:bg-surface-container-low transition-all duration-300 px-sm py-xs rounded-DEFAULT text-label-md font-label-md" href="#">Populares</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors hover:bg-surface-container-low transition-all duration-300 px-sm py-xs rounded-DEFAULT text-label-md font-label-md" href="#">Favoritos</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors hover:bg-surface-container-low transition-all duration-300 px-sm py-xs rounded-DEFAULT text-label-md font-label-md" href="#">Reservas</a>
+</nav>
+<!-- Trailing Action -->
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center justify-center bg-primary text-on-primary text-label-md font-label-md px-md py-sm rounded-full hover:opacity-80 scale-[0.99] transition-transform shadow-[0_4px_20px_rgba(44,62,80,0.05)]">
+                    Acceder
+                </button>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden cursor-pointer image-inset">
+<img alt="Foto de perfil del usuario" class="w-full h-full object-cover" data-alt="A detailed, close-up portrait of a smiling user in a bright, modern setting. The lighting is soft and natural, highlighting a friendly expression. The aesthetic is clean and professional, matching the Sabor&amp;Sal brand identity with warm, subtle tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy32hU0-eoEmlw6NLRs1gbNUW2eChPSreN8bhjh3Y73WJ0qnf3Gbq4ZvlHJyBD5CC6BfhJyonx02guns2U1Gy2vYPvuCVOiVk8uBFwI15nHchc733bG-uKBvEan-TZSCaFArGFhn0w5yTpja7whWgBZ4NgyjtcINopdw2pHWQIG6nbRy9qopgNBkzjmmkP3kyuA8ocsdKT_XMkDwuNCTFD63LwSewWl65ANrNrgysZWd8XB1U-dYcp">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-xl py-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-sm">
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface mb-xs">Vistos Recientemente</h1>
+<p class="text-body-md font-body-md text-secondary">Tus últimas exploraciones culinarias.</p>
+</div>
+<button class="flex items-center gap-xs px-sm py-xs text-secondary hover:text-primary border border-outline rounded-full text-label-md font-label-md transition-colors hover:bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                Limpiar historial
+            </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Item 1: Large Feature -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(44,62,80,0.05)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(44,62,80,0.1)] transition-all duration-300 flex flex-col md:flex-row">
+<div class="w-full md:w-1/2 h-64 md:h-auto relative image-inset">
+<img alt="Restaurant thumbnail" class="w-full h-full object-cover" data-alt="A stunning, high-resolution food photography shot of an artisanal, organic farm-to-table dish at La Finca Verde. The plating is exquisite, featuring vibrant greens and warm earth tones, set on a rustic wooden table with natural, soft sunlight casting gentle shadows. The overall mood is premium, organic, and appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYuaoZ_k8cDWwLAsf-Xc5uGffxfSgxhLxqmBHW9eangi3Fmacrx4f12II2tqfqh4FAF0SJthzQmElaS3E3Jo0aloiAtH7Vvm34nXCSUttE3gSCLGN2FpD9uaPUmcqQoNSyzkM758R68huZPrzT-DgMj-nwtK-NdLaPj5aKwIb3SuU06lPLgKa_4dEZME0lTvrbTQyS-pVfhRqql92z79Xca3eBOEHxt5Uk9Ng0z_CUfrNTD-ZnadyT">
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-xs py-xs rounded-full flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-caption font-semibold text-on-surface pr-1">4.9</span>
+</div>
+</div>
+<div class="p-md flex flex-col justify-between w-full md:w-1/2">
+<div>
+<div class="flex items-center gap-xs mb-sm">
+<span class="bg-surface-container px-sm py-xs rounded-full text-caption font-caption text-secondary">Orgánico</span>
+<span class="bg-surface-container px-sm py-xs rounded-full text-caption font-caption text-secondary">Mediterránea</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-xs">La Finca Verde</h3>
+<p class="text-body-md font-body-md text-secondary line-clamp-2">Experiencia de la granja a la mesa con ingredientes locales de temporada, en un ambiente rústico y elegante.</p>
+</div>
+<div class="mt-md flex items-center justify-between border-t border-outline-variant/30 pt-sm">
+<span class="text-caption font-caption text-secondary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> Hace 2 horas
+                        </span>
+<button class="text-primary hover:text-primary-container text-label-md font-label-md flex items-center gap-xs transition-colors group">
+                            Volver a ver
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Vertical Card -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(44,62,80,0.05)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(44,62,80,0.1)] transition-all duration-300 flex flex-col">
+<div class="w-full h-48 relative image-inset">
+<img alt="Restaurant thumbnail" class="w-full h-full object-cover" data-alt="An elegant, minimalist interior of a sushi bar, 'Umami Sushi'. High-end sushi beautifully presented on a dark slate plate, illuminated by soft, focused lighting. The atmosphere is quiet, refined, and modern, utilizing cool tones balanced with the warm colors of fresh sashimi." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBhn_0OtD7USLI5soBlFNylrNoI1FquVMau0W4j97-PUAo8CNY6ITibqbo8BxsdH4LjfHzZCPLjCXtz2V1qC_SiiWJrUBBJOulrXqubsLrB-_vboe8uCUYI_z3SGpD_n1DNjyNdRuCRLlPgGjEO8UtoL5ahBK1AY2FdINQ1pMxztkG5R6Efmh_V3mC4_FaF5C7nz_9l6TkusYabei8iKFJiey2mnKcAdIBaeiWVvndsC3_xI7pykR2">
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-xs py-xs rounded-full flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-caption font-semibold text-on-surface pr-1">4.7</span>
+</div>
+</div>
+<div class="p-md flex flex-col justify-between flex-grow">
+<div>
+<div class="flex items-center gap-xs mb-sm">
+<span class="bg-surface-container px-sm py-xs rounded-full text-caption font-caption text-secondary">Japonesa</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-xs">Umami Sushi</h3>
+<p class="text-body-md font-body-md text-secondary line-clamp-2">Cocina japonesa contemporánea con un enfoque en cortes puros y precisión.</p>
+</div>
+<div class="mt-md flex items-center justify-between border-t border-outline-variant/30 pt-sm">
+<span class="text-caption font-caption text-secondary">Ayer</span>
+<button class="text-primary hover:text-primary-container text-label-md font-label-md flex items-center gap-xs transition-colors">
+                            Ver
+                        </button>
+</div>
+</div>
+</div>
+<!-- Item 3: Horizontal Slim Card -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(44,62,80,0.05)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(44,62,80,0.1)] transition-all duration-300 flex">
+<div class="w-1/3 min-w-[120px] relative image-inset">
+<img alt="Restaurant thumbnail" class="w-full h-full object-cover" data-alt="A warm, inviting shot of a specialty coffee shop, 'El Grano Tostado'. A perfectly poured latte with intricate latte art sits on a light oak counter next to a flaky croissant. The lighting is bright and morning-like, conveying a cozy yet sophisticated urban cafe vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD78CX3LAobaqR25wuhbhRkjACEf_EGOE4TBLiTQBdOPJykHbliLf0IplyiwxyS33Wh1iS9c5EuML0qHtqK_z_OZfzJRTAzfvGREXXz0XFDqRDJ4ceASBRLPvuc0d4IHhz7hlL3BWsjKB9m8ONaicAoryNKRtLPt9NJCMhc90MY0E5ccASLiypM88UXxwbwwVzeUceYj4hRbu7X78cwZHZrQYTTH6xPMuqMvXpx-jeAlaT2XiW_vRN">
+</div>
+<div class="p-sm md:p-md flex flex-col justify-between w-2/3">
+<div>
+<h3 class="text-label-md font-label-md md:text-headline-sm md:font-headline-sm text-on-surface mb-xs line-clamp-1">El Grano Tostado</h3>
+<p class="text-caption font-caption md:text-body-md md:font-body-md text-secondary line-clamp-1">Cafetería de especialidad.</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="text-caption font-caption text-secondary">Hace 2 días</span>
+<button class="text-primary hover:text-primary-container text-label-md font-label-md flex items-center gap-xs transition-colors">
+                            Ver
+                        </button>
+</div>
+</div>
+</div>
+<!-- Item 4: Horizontal Slim Card -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(44,62,80,0.05)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(44,62,80,0.1)] transition-all duration-300 flex">
+<div class="w-1/3 min-w-[120px] relative image-inset">
+<img alt="Restaurant thumbnail" class="w-full h-full object-cover" data-alt="A stylish, dimly lit cocktail bar, 'Noche y Sal'. Focus on a beautifully crafted, bright red cocktail in an elegant glass on a polished marble bar. Ambient background features blurred bottles and soft, warm low lighting, creating a premium, exclusive nightlife atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw29HEm__Tg5ST4eCrJxxzuT5rvD2-OCjRMnYPbBWmVAXfbwG2dUcSI-ilksnsZQyRv9XlwzEAkPBAlVMThAvjlacGpdVKaBlLERpaONg-8pCrcVLIS2z4xy9oLAGQu1D85UDCdNEjEWSPyfpklq0A0PouY2y_EgUL7OLizidJx_I-oJQQd88rIxiHq4XcdIjtGdogZf2luXXA4sRZ8pYvPmNGuJiW7ocmJuMjCGJPWfOSiXM1OP86">
+</div>
+<div class="p-sm md:p-md flex flex-col justify-between w-2/3">
+<div>
+<h3 class="text-label-md font-label-md md:text-headline-sm md:font-headline-sm text-on-surface mb-xs line-clamp-1">Noche y Sal</h3>
+<p class="text-caption font-caption md:text-body-md md:font-body-md text-secondary line-clamp-1">Coctelería de autor.</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="text-caption font-caption text-secondary">Hace 3 días</span>
+<button class="text-primary hover:text-primary-container text-label-md font-label-md flex items-center gap-xs transition-colors">
+                            Ver
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant opacity-90 mt-auto full-width bottom-0">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-xl py-lg max-w-container-max mx-auto gap-md">
+<!-- Footer Brand -->
+<div class="text-label-md font-label-md font-black text-on-surface">GatroLocal</div>
+<!-- Footer Links -->
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="text-secondary hover:text-primary hover:underline transition-all text-label-md font-label-md focus:ring-2 focus:ring-primary outline-none rounded-sm" href="#">Sobre Nosotros</a>
+<a class="text-secondary hover:text-primary hover:underline transition-all text-label-md font-label-md focus:ring-2 focus:ring-primary outline-none rounded-sm" href="#">Términos de Servicio</a>
+<a class="text-secondary hover:text-primary hover:underline transition-all text-label-md font-label-md focus:ring-2 focus:ring-primary outline-none rounded-sm" href="#">Privacidad</a>
+<a class="text-secondary hover:text-primary hover:underline transition-all text-label-md font-label-md focus:ring-2 focus:ring-primary outline-none rounded-sm" href="#">Contacto</a>
+</nav>
+<!-- Copyright -->
+<div class="text-caption font-caption text-secondary text-center md:text-right">
+                © 2024 Sabor&amp;Sal. Experiencias culinarias orgánicas.
+            </div>
+</div>
+</footer>
+
+
+</body></html>

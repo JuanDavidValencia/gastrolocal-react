@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Sabor&Sal - Recientes</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <!-- SDK de Supabase (Auth + Data API) -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/auth-ui.js" type="module" defer></script>
+    </head>
+<body>
+    <header class="header-principal">
+        <div><h1><a href="index.html">GastroLocal</a></h1></div>
+        <nav>
+                <a href="index.html">Inicio</a>
+                <a href="populares.html">Populares</a>
+                <a href="Favoritos.html">Favoritos</a>
+                <a href="recientes.html">Recientes</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="vistaRestaurante.html">Vista</a>
+        </nav>
+            <div class="sesion-usuario">
+                <a href="perfil.html" id="enlace-perfil" hidden title="Ir a mi perfil">
+                    <img id="foto-perfil" alt="Foto de perfil" width="40" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+                </a>
+                <span id="nombre-usuario"></span>
+                <button id="btn-acceder" type="button" title="Acceder con Google">Acceder</button>
+                <button id="btn-registrarse" type="button" title="Registrarse con Google">Registrarse</button>
+                <button id="btn-cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+            </div>
+        </header>
+
+    <main>
+        <p class="bienvenida-texto">Bienvenido, aquí podrás ver todos los restaurantes que viste recientemente.</p>
+
+        <section id="recientes">
+            <h2>Vistos recientemente</h2>
+
+            <!-- CONTENEDOR FLEXBOX PARA ALINEAR EN FILA -->
+            <div class="tarjetas">
+
+                <article class="tarjeta">
+                    <div>
+                        <h3>Pizza Combo</h3>
+                        <p class="restaurante-nombre">Pizzería Napoli</p>
+                        <p class="restaurante-desc">Las mejores pizzas artesanales a la leña.</p>
+                        <img src="http://imgs.search.brave.com/4lMu91SqVhHZ1sbd0K0c5UdSs3aUkjE_e4JrwkeFt-c/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50aW1lb3V0LmNv/bS9pbWFnZXMvMTA1/OTk5ODYwLzc1MC81/NjIvaW1hZ2UuanBn" alt="Pizza Combo">
+                        <button class="btn-volver">Volver a ver</button>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div>
+                        <h3>Raimunda</h3>
+                        <p class="restaurante-nombre">Restaurante Raimunda</p>
+                        <p class="restaurante-desc">Comida de autor en un ambiente de jardín único.</p>
+                        <img src="https://hips.hearstapps.com/hmg-prod/images/elle-restaurantes-decoracion-bonita-instagram-raimunda-madrid-1573068471.jpeg?resize=980:*" alt="Restaurante Raimunda">
+                        <button class="btn-volver">Volver a ver</button>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div>
+                        <h3>Sushi Bar</h3>
+                        <p class="restaurante-nombre">Hikari Sushi</p>
+                        <p class="restaurante-desc">Rolls frescos y la mejor experiencia japonesa.</p>
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArE5SPuQgeE8BY7-Cmt-EMvw1wZFz5INAkqbU0saagmR45mtq0Kzk9AGB_6rNIF_2O6poy1fUzqiQDhAMM3TJxEeXH8pZMiaxFOnCIHoPmgeP3wd1Bm2ACkV1-qhB9HbyCK9LCXwfL2MtpP5BTTa73eS4oXS4ndxDJ2zSvmxc-vpwPvhsGjfcElY1pHXsJmYtT4wjAWgxYYkLpoNYDGovR_u3asXjyeUbuciov4-xjnyYsEU7tzsUz" alt="Sushi Bar">
+                        <button class="btn-volver">Volver a ver</button>
+                    </div>
+                </article>
+            </div> 
+        </section>
+    </main>
+</body>
+</html>

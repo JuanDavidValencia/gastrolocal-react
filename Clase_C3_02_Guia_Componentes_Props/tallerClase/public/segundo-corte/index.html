@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Sabor&Sal-Index</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/index-styles.css">
+        <!-- SDK de Supabase (Auth + Data API). Es un script clásico: debe cargarse
+             antes que los módulos ES6 para que window.supabase ya exista. -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/index.js" type="module" defer></script>
+        <script src="js/auth-ui.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <div><h1><a href="index.html">GastroLocal</a></h1></div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="populares.html">Populares</a>
+                <a href="Favoritos.html">Favoritos</a>
+                <a href="recientes.html">Recientes</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="vistaRestaurante.html">Vista</a>
+            </nav>
+            <div class="sesion-usuario">
+                <a href="perfil.html" id="enlace-perfil" hidden title="Ir a mi perfil">
+                    <img id="foto-perfil" alt="Foto de perfil" width="40" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+                </a>
+                <span id="nombre-usuario"></span>
+                <button id="btn-acceder" type="button" title="Acceder con Google">Acceder</button>
+                <button id="btn-registrarse" type="button" title="Registrarse con Google">Registrarse</button>
+                <button id="btn-cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+            </div>
+        </header>
+        <main>
+            <p id="estado-auth" role="status"></p>
+
+            <section id="banner-inicio">
+                <h1>¿Qué quieres comer hoy?</h1>
+                <input type="text" id="buscador" placeholder="Buscar comida...">
+            </section>
+            
+            <section id="Recomendaciones">
+                <h2>Recomendaciones</h2>
+                <a href="restaurantes.html">Ver todas</a>
+            </section>
+
+            <div class="tarjetas">
+
+            </div>
+        </main>
+    </body>

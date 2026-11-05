@@ -1,0 +1,11 @@
+# Metadatos de Google Drive / Windows
+desktop.ini
+Thumbs.db
+
+# Dependencias y builds (por si se ejecuta desde la raíz)
+node_modules/
+dist/
+.vite/
+
+# Sistema
+.DS_Store
