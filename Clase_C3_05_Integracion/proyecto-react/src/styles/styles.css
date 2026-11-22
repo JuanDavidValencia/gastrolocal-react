@@ -43,7 +43,7 @@ button {
 }
 
 a {
-  color: var(--primary);
+  color: #994000;
 }
 
 .sr-only {
@@ -97,11 +97,7 @@ a {
   gap: 0.65rem;
 }
 
-.marca h1 {
-  margin: 0;
-}
-
-.marca h1 a {
+.marca a {
   color: var(--primary);
   font-family: "Quicksand", "Segoe UI", sans-serif;
   font-size: 2.2rem;
@@ -112,31 +108,9 @@ a {
   display: inline-block;
 }
 
-.marca h1 a:hover {
+.marca a:hover {
   color: var(--tertiary);
   transform: scale(1.04);
-}
-
-.header-principal nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.15rem 0.25rem;
-}
-
-.header-principal nav a {
-  padding: 0.35rem 0.6rem;
-  border-radius: 6px;
-  color: var(--neutral);
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.header-principal nav a:hover,
-.header-principal nav a[aria-current="page"] {
-  background-color: #fbe9dc;
-  color: var(--primary);
 }
 
 /* ------------------------------
@@ -468,17 +442,12 @@ main {
     justify-content: center;
   }
 
-  .marca h1 a {
+  .marca a {
     font-size: 1.9rem;
   }
 
   .header-principal nav {
     width: 100%;
-  }
-
-  .header-principal nav a {
-    flex: 1 1 auto;
-    text-align: center;
   }
 
   #banner-inicio {

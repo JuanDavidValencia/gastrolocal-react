@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { Link } from "react-router";
 import { useToggle } from "../hooks/useToggle.js";
 import { formatearFecha } from "../utils/fecha.js";
 
@@ -75,6 +76,13 @@ export default function TarjetaReserva({
       )}
 
       <div className="reserva-acciones">
+        <Link
+          className="boton-secundario"
+          aria-label={`Ver detalle de la reserva ${codigo}`}
+          to={"/reservas/" + encodeURIComponent(reserva.id)}
+        >
+          Ver detalle
+        </Link>
         <button
           type="button"
           className="boton-secundario"

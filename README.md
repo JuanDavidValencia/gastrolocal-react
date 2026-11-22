@@ -1,203 +1,82 @@
 # GastroLocal · React
 
-Aplicación web de restaurantes desarrollada como taller de **React + Vite**. Incluye la vista **Populares** (búsqueda, filtros y tarjetas reutilizables) y la vista **Reservas** (formulario controlado, validación, registros en memoria y búsqueda con estado vacío).
-
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-Auth%20%2B%20Data-3FCF8E?logo=supabase&logoColor=white)
-![Estado](https://img.shields.io/badge/estado-funcionando-success)
-
----
+Aplicación de restaurantes desarrollada con React y Vite. Populares conserva la búsqueda y los filtros por categoría. Cada cuenta de Google puede crear, consultar, editar y eliminar sus reservas en Supabase. El listado y el detalle comparten la sesión.
 
 ## Contenido del repositorio
 
-| Ruta | Descripción |
+| Clase | Contenido |
 |---|---|
-| `Clase_C3_03_Interaccion_Formularios/proyecto-react/` | Aplicación **React + Vite** actual (Populares + Reservas). |
-| `Clase_C3_03_Interaccion_Formularios/evidencias/` | Capturas de la validación, el alta de reservas y el estado vacío. |
-| `Clase_C3_03_Interaccion_Formularios/Clase_C3_03_Interaccion_Formularios.md` | Bitácora de la clase de interacción y formularios. |
-| `Clase_C3_02_Guia_Componentes_Props/tallerClase/` | Versión anterior de la app React (solo Populares). |
-| `Plantilla_Bitacora.md` | Plantilla base de las bitácoras. |
+| [02 · Componentes y props](Clase_C3_02_Guia_Componentes_Props/) | Catálogo Populares con tarjetas reutilizables. |
+| [03 · Interacción y formularios](Clase_C3_03_Interaccion_Formularios/) | Formulario controlado y reservas en memoria. |
+| [04 · API y CRUD](Clase_C3_04_APIs_CRUD/) | Google y reservas conectadas a Supabase. |
+| [05 · Integración final](Clase_C3_05_Integracion/) | Rutas, sesión compartida, detalle de reservas y pruebas. |
 
-> Todos los comandos de npm se ejecutan desde `Clase_C3_03_Interaccion_Formularios/proyecto-react/`.
+Para la entrega final, ejecuta los comandos de npm desde [`Clase_C3_05_Integracion/proyecto-react`](Clase_C3_05_Integracion/proyecto-react/).
 
----
+## Inicio local
 
-## Tecnologías
-
-| Herramienta | Versión |
-|---|---|
-| Node.js | 26.13.0 |
-| npm | 11.20.0 |
-| React | 19.3.1 |
-| Vite | 8.3.5 |
-| Supabase | Auth + Data API (versión del segundo corte) |
-
----
-
-## Cómo ejecutar
+Requiere Node.js 22.12 o superior y npm. La aplicación usa React 19, Vite 8, React Router 7 y Supabase JS 2.
 
 ```bash
-# 1. Clonar el repositorio
 git clone https://github.com/JuanDavidValencia/gastrolocal-react.git
-
-# 2. Entrar a la app React actual
-cd gastrolocal-react/Clase_C3_03_Interaccion_Formularios/proyecto-react
-
-# 3. Instalar dependencias
-npm install
-
-# 4. Levantar el servidor de desarrollo
-npm run dev
+cd gastrolocal-react/Clase_C3_05_Integracion/proyecto-react
+npm ci
 ```
 
-Abre la URL que imprime Vite (por defecto `http://localhost:5173/`).
+Copia `.env.example` a `.env.local` y completa las variables del proyecto de Supabase.
 
-| Vista | URL |
-|---|---|
-| Populares | `http://localhost:5173/#/populares` |
-| Reservas | `http://localhost:5173/#/reservas` |
-| Versión del segundo corte | `http://localhost:5173/segundo-corte/index.html` |
+```dotenv
+VITE_SUPABASE_URL=https://TU_PROYECTO.supabase.co
+VITE_SUPABASE_ANON_KEY=TU_CLAVE_PUBLISHABLE
+```
 
-### Scripts disponibles
+Usa la clave pública `publishable` o `anon`. Mantén `.env.local`, las claves administrativas y las credenciales de prueba fuera del repositorio.
 
 ```bash
-npm run dev       # Servidor de desarrollo con recarga en caliente
-npm run build     # Compila la versión de producción en dist/
-npm run preview   # Sirve la compilación de producción
+npm run dev
+npm test
+npm run build
+npm run preview
 ```
 
----
+Abre el origen que imprime Vite. Para probar el retorno de Google en desarrollo y en vista previa, autoriza en **Supabase → Authentication → URL Configuration → Redirect URLs** las URL exactas que uses, por ejemplo `http://localhost:5173/acceso` y `http://localhost:4173/acceso`. Usa el mismo origen durante todo el acceso.
 
-## Funcionalidades
+La integración reutiliza Google, las tablas `reservas` y `restaurantes`, y las políticas de la clase 04. `reservas.usuario_id` corresponde a `auth.uid()`. La lectura del catálogo utiliza el acceso público del proyecto. [Contrato de datos y políticas de la clase 04](Clase_C3_04_APIs_CRUD/proyecto-react/README.md#políticas-rls)
 
-### Populares
+## Rutas principales
 
-- Buscador controlado que ignora mayúsculas y tildes.
-- Filtro por categorías con `aria-pressed`.
-- Filtrado combinado con `useMemo` y contador de resultados con `aria-live`.
-- Estado vacío cuando no hay coincidencias.
-- Tarjeta reutilizable con tres registros recibidos por props.
-
-### Reservas
-
-- Formulario controlado con siete campos y validación por reglas del dominio.
-- Mensajes de error asociados con `aria-invalid` y `aria-describedby`.
-- Registros en memoria con identificadores estables y aviso de confirmación.
-- Búsqueda por nombre, restaurante, fecha u hora, con contador y estado vacío.
-- Detalles de contacto desplegables por tarjeta con `useToggle`.
-- Identificadores accesibles generados con `useId`.
-
-La navegación entre vistas usa el hash de la URL. Los enlaces que aún no tienen una vista React conservan las páginas de `public/segundo-corte/`.
-
----
-
-## Componentes
-
-| Componente | Función | Props |
+| Ruta | Acceso | Vista |
 |---|---|---|
-| `Header` | Marca y navegación principal con `aria-current`. | `vistaActiva` |
-| `BannerBuscador` | Título y buscador controlado de Populares. | `valor`, `onCambio` |
-| `FiltroCategorias` | Selección de categoría con `aria-pressed`. | `categorias`, `categoriaActiva`, `onSeleccionar` |
-| `ListaRestaurantes` | Recorre la colección, asigna `key` y resuelve el estado vacío. | `restaurantes`, `onOrdenar` |
-| `TarjetaRestaurante` | Presenta categoría, nombre, descripción, imagen, precio y reseña. | `restaurante`, `onOrdenar` |
-| `FormularioReserva` | Formulario controlado, validación y notificación del alta. | `restaurantes`, `onReservar` |
-| `TarjetaReserva` | Presenta una reserva y alterna sus detalles de contacto. | `reserva` |
+| `/` | Público | Inicio y selección de zona. |
+| `/populares` | Público | Catálogo, búsqueda y filtro. |
+| `/acceso` | Público | Acceso con Google. Una sesión activa lleva al listado. |
+| `/reservas` | Privado | Formulario, listado, filtros, edición y eliminación. |
+| `/reservas/:id` | Privado | Detalle de una reserva. El ID de la fila llega como texto. |
+| Dirección desconocida | Público | Página no encontrada con enlace a Inicio. |
 
-La vista `Reservas` administra la lista, la búsqueda y el mensaje de confirmación. El formulario conserva sus campos y errores; cada tarjeta conserva de forma independiente si muestra sus detalles.
+La versión HTML del segundo corte está disponible en `/segundo-corte/index.html`.
 
----
+## Despliegue
 
-## Estructura del proyecto React
+1. Importa `JuanDavidValencia/gastrolocal-react` en Vercel. Selecciona `Clase_C3_05_Integracion/proyecto-react` como **Root Directory**, Vite como preset, `npm run build` y `dist`.
+2. Configura `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` como variables del frontend. `vercel.json` envía las rutas internas a `index.html` para que React muestre la vista correspondiente.
+3. Agrega `https://TU_DOMINIO/acceso` a las redirecciones permitidas en Supabase. Configura **Site URL** con el dominio principal si será el origen predeterminado del equipo.
 
-```text
-Clase_C3_03_Interaccion_Formularios/proyecto-react/
-├── index.html
-├── package.json
-├── vite.config.js
-├── public/
-│   ├── imagen-respaldo.svg
-│   ├── prueba-anchos.html
-│   └── segundo-corte/              # Versión HTML + CSS + JS anterior
-├── src/
-│   ├── main.jsx
-│   ├── App.jsx                     # Navegación por hash y composición
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   ├── BannerBuscador.jsx
-│   │   ├── FiltroCategorias.jsx
-│   │   ├── ListaRestaurantes.jsx
-│   │   ├── TarjetaRestaurante.jsx
-│   │   ├── FormularioReserva.jsx
-│   │   └── TarjetaReserva.jsx
-│   ├── views/
-│   │   ├── Populares.jsx
-│   │   └── Reservas.jsx
-│   ├── hooks/
-│   │   └── useToggle.js
-│   ├── data/
-│   │   ├── restaurantes.js
-│   │   └── reservas.js
-│   ├── utils/
-│   │   ├── fecha.js
-│   │   └── normalizar.js
-│   └── styles/
-│       ├── styles.css
-│       └── reservas.css
-```
+Consulta el estado del enlace público en la [bitácora de integración](Clase_C3_05_Integracion/Clase_C3_05_Integracion.md#6-evidencias).
 
----
+## Recorrido de verificación
 
-## Verificación
+1. Abre la aplicación en una ventana privada. Entra directamente a `/reservas/1` y comprueba que aparece `/acceso`.
+2. Entra con una cuenta de Google de prueba. Intenta guardar el formulario incompleto. Después crea una reserva con un nombre y contacto ficticios y una fecha futura.
+3. Abre **Ver detalle** desde la tarjeta. Comprueba el ID en la dirección, usa **Atrás**, abre el detalle otra vez y recarga esa ruta en una pestaña con sesión activa.
+4. Edita la reserva y verifica el cambio tras recargar el detalle. Prueba `/reservas/01`, un ID válido sin fila visible y una consulta con la red desactivada. Al restablecer la red, usa **Reintentar**.
+5. Activa **Menú compacto** y recarga. Cierra sesión desde un detalle. Inicia sesión con una segunda cuenta autorizada y abre la URL de la primera reserva. Comprueba que la fila y el borrador quedan fuera de la vista. Con la cuenta propietaria elimina el dato ficticio y verifica que el detalle queda indisponible.
+6. En Inicio, elige una zona manualmente. Pulsa **Usar mi ubicación** y prueba el mensaje de permiso denegado. La zona manual sigue disponible.
+7. Ejecuta `npm test` para verificar la regla de los identificadores positivos `bigint`.
 
-| Prueba | Resultado |
-|---|---|
-| `npm run build` | Compila sin errores (31 módulos). |
-| Envío vacío del formulario | 7 mensajes de error, sin registro nuevo. |
-| Envío válido | Registro agregado, campos limpios y aviso de confirmación. |
-| Dos registros consecutivos | La lista pasa de 2 a 4 reservas. |
-| Búsqueda con coincidencias | Se filtran las tarjetas y cambia el contador. |
-| Búsqueda sin coincidencias | Aparece el estado vacío y la opción de limpiar. |
-| Detalles por tarjeta | Se abren y cierran de forma independiente. |
-| Vista Populares | Conserva sus tres registros y no muestra formularios. |
-| Consola del navegador | Sin errores. |
-
-Evidencias: `Clase_C3_03_Interaccion_Formularios/evidencias/`.
-
----
-
-## Configuración de Supabase (versión del segundo corte)
-
-La versión anterior usa Supabase para autenticación y datos. La configuración está en:
-
-```text
-Clase_C3_03_Interaccion_Formularios/proyecto-react/public/segundo-corte/js/config.js
-```
-
-```js
-export const SUPABASE_URL = "https://<tu-proyecto>.supabase.co";
-export const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_...";
-export const REDIRECT_URL = "";
-```
-
-> La **publishable key** está diseñada para ser pública. Aun así, asegúrate de tener **RLS (Row Level Security)** activado en todas las tablas de Supabase.
-
----
-
-## Notas
-
-- `node_modules/` y `dist/` **no** se incluyen en el repositorio; se regeneran con `npm install` y `npm run build`.
-- Los estilos son CSS plano con variables, sin frameworks de CSS.
-- Las reservas de esta entrega viven en memoria; la integración con la API se trabaja en la siguiente clase.
-- Los archivos `desktop.ini` están ignorados para evitar que los metadatos de Windows rompan la compilación de Vite.
-
----
+Usa datos ficticios en las evidencias y oculta credenciales, correos reales y datos de terceros.
 
 ## Autores
 
-**Juan David Valencia Ospina**
-- GitHub: [@JuanDavidValencia](https://github.com/JuanDavidValencia)
-- Correo: juan.valencia.0677@eam.edu.co
-
-**María José Ospina**
-- Correo: maria.ospina@eam.edu.co
+- Juan David Valencia Ospina. [@JuanDavidValencia](https://github.com/JuanDavidValencia)
+- María José Ospina.

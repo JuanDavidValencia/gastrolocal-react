@@ -7,5 +7,12 @@ node_modules/
 dist/
 .vite/
 
+# Configuración local de la entrega
+.env
+.env.*
+!.env.example
+.obsidian/
+.vercel/
+
 # Sistema
 .DS_Store

@@ -2,11 +2,8 @@ import { useEffect, useId, useMemo, useState } from "react";
 import FormularioReserva from "../components/FormularioReserva.jsx";
 import TarjetaReserva from "../components/TarjetaReserva.jsx";
 import { useReservas } from "../hooks/useReservas.js";
-import { useSesion } from "../hooks/useSesion.js";
-import { supabaseConfigurado } from "../lib/supabase.js";
 import { listarRestaurantes } from "../services/restaurantes.js";
 import { normalizarTexto } from "../utils/normalizar.js";
-import "../styles/reservas.css";
 
 const OPCIONES_ESTADO = [
   { valor: "todas", etiqueta: "Todas" },
@@ -15,83 +12,7 @@ const OPCIONES_ESTADO = [
   { valor: "cancelada", etiqueta: "Canceladas" },
 ];
 
-export default function Reservas() {
-  const { usuario, cargando, error, iniciarSesionConGoogle } = useSesion();
-
-  if (!supabaseConfigurado) {
-    return (
-      <SeccionReservas descripcion="La vista de reservas necesita la URL y la clave publishable del proyecto de Supabase.">
-        <div className="panel-reserva reservas-panel-aviso" role="alert">
-          <h2>Falta configurar Supabase</h2>
-          <p className="reservas-nota">
-            Crea el archivo <code>.env.local</code> a partir de{" "}
-            <code>.env.example</code> y define{" "}
-            <code>VITE_SUPABASE_URL</code> y{" "}
-            <code>VITE_SUPABASE_ANON_KEY</code>. Después reinicia el servidor de
-            Vite.
-          </p>
-        </div>
-      </SeccionReservas>
-    );
-  }
-
-  if (cargando) {
-    return (
-      <SeccionReservas>
-        <p className="reservas-cargando" role="status">
-          Comprobando tu sesión…
-        </p>
-      </SeccionReservas>
-    );
-  }
-
-  if (!usuario) {
-    return (
-      <SeccionReservas descripcion="Inicia sesión con tu cuenta de Google para crear, editar y eliminar tus reservas. Solo tú puedes verlas.">
-        <div className="panel-reserva panel-sesion">
-          <h2>Inicia sesión</h2>
-          <p className="reservas-nota">
-            Tus reservas quedan asociadas a tu cuenta y protegidas por las
-            políticas de acceso de Supabase.
-          </p>
-
-          {error && (
-            <p className="reservas-aviso-error" role="alert">
-              {error}
-            </p>
-          )}
-
-          <button
-            type="button"
-            className="boton-primario"
-            onClick={iniciarSesionConGoogle}
-          >
-            Iniciar sesión con Google
-          </button>
-        </div>
-      </SeccionReservas>
-    );
-  }
-
-  return <PanelReservas usuario={usuario} />;
-}
-
-function SeccionReservas({
-  descripcion = "Elige el restaurante, la fecha y la hora. La reserva queda guardada en tu cuenta y puedes consultarla en cualquier momento.",
-  children,
-}) {
-  return (
-    <section className="seccion-reservas" aria-labelledby="titulo-reservas">
-      <div className="encabezado-reservas">
-        <h1 id="titulo-reservas">Haz tus reservas</h1>
-        <p>{descripcion}</p>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function PanelReservas({ usuario }) {
+export default function Reservas({ usuario }) {
   const {
     reservas,
     estado,

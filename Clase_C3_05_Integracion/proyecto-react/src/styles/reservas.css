@@ -131,29 +131,32 @@
   padding: 0.6rem 1.1rem;
   border-radius: 100px;
   font-weight: 700;
+  text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease,
     border-color 0.2s ease;
 }
 
 .boton-primario {
-  border: 2px solid var(--primary);
-  background-color: var(--primary);
-  color: var(--secondary);
+  border: 2px solid #a33f00;
+  background-color: #a33f00;
+  color: #fff;
 }
 
 .boton-primario:hover {
-  border-color: var(--tertiary);
-  background-color: var(--tertiary);
+  border-color: #872f00;
+  background-color: #872f00;
+  color: #fff;
 }
 
 .boton-secundario {
   border: 2px solid var(--primary);
   background-color: transparent;
-  color: var(--primary);
+  color: #872f00;
 }
 
 .boton-secundario:hover {
   background-color: #fbe9dc;
+  color: #872f00;
 }
 
 .reservas-aviso-exito {
@@ -351,6 +354,10 @@
   margin-top: 0.5rem;
 }
 
+.detalle-reserva {
+  overflow-wrap: anywhere;
+}
+
 .reserva-acciones {
   display: flex;
   flex-wrap: wrap;
@@ -360,7 +367,8 @@
   border-top: 1px solid var(--borde-suave);
 }
 
-.reserva-acciones button {
+.reserva-acciones button,
+.reserva-acciones a {
   padding: 0.4rem 0.9rem;
   font-size: 0.82rem;
 }

@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase.js";
 // Columnas que la interfaz necesita. Evitamos `select("*")` para que un cambio
 // en la tabla no rompa la vista sin avisar.
 const CAMPOS =
-  "id,usuario_id,restaurante_id,nombre,email,telefono,personas,fecha,hora,notas,estado,creado_en";
+  "id:id::text,usuario_id,restaurante_id,nombre,email,telefono,personas,fecha,hora,notas,estado,creado_en";
 
 const ESTADOS_VALIDOS = ["pendiente", "confirmada", "cancelada"];
 
@@ -133,7 +133,7 @@ export async function eliminarReserva(id, usuarioId) {
     .delete()
     .eq("id", id)
     .eq("usuario_id", usuarioId)
-    .select("id");
+    .select("id:id::text");
 
   if (error) {
     throw traducirError(error);
@@ -146,4 +146,17 @@ export async function eliminarReserva(id, usuarioId) {
   }
 
   return data[0];
+}
+
+export async function leerReserva(id, usuarioId, signal) {
+  const { data, error } = await cliente()
+    .from("reservas")
+    .select(CAMPOS)
+    .eq("id", id)
+    .eq("usuario_id", usuarioId)
+    .abortSignal(signal)
+    .maybeSingle();
+
+  if (error) throw traducirError(error);
+  return data;
 }

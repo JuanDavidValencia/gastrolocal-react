@@ -10,9 +10,7 @@ export const supabaseConfigurado = Boolean(URL_SUPABASE && CLAVE_PUBLICABLE);
 
 // Un único cliente para toda la aplicación: la sesión y la Data API
 // comparten la misma instancia.
-// PKCE evita que el token viaje en el fragmento de la URL. La navegación
-// de la aplicación usa el hash (#/reservas), así que un flujo implícito
-// podría chocar con la vista actual.
+// PKCE devuelve un código de autorización a la ruta /acceso.
 export const supabase = supabaseConfigurado
   ? createClient(URL_SUPABASE, CLAVE_PUBLICABLE, {
       auth: {

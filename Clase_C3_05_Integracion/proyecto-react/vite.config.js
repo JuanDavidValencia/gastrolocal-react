@@ -49,9 +49,14 @@ function quitarDesktopIni() {
 // falla al crear la caché de dependencias dentro del proyecto y no entrega
 // eventos de cambio confiables, así que la caché se escribe en la carpeta
 // temporal del sistema y el watcher usa sondeo.
+const carpetaTemporal = os.tmpdir();
+const cacheDir = /[#?]/.test(carpetaTemporal)
+  ? undefined
+  : path.join(carpetaTemporal, "gastrolocal-vite-cache-integracion");
+
 export default defineConfig({
   plugins: [react(), quitarDesktopIni()],
-  cacheDir: path.join(os.tmpdir(), "gastrolocal-vite-cache"),
+  cacheDir,
   server: {
     watch: {
       usePolling: true,

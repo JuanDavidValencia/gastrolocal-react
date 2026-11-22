@@ -1,0 +1,61 @@
+.menu,
+.compacto,
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu { gap: 0.3rem 0.6rem; }
+.compacto { gap: 0.1rem; }
+.controles { gap: 0.4rem; }
+
+.compacto .enlace {
+  padding-inline: 0.3rem;
+}
+
+.enlace {
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  color: var(--neutral);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace:hover,
+.activo {
+  background-color: #fbe9dc;
+  color: #872f00;
+}
+
+.activo {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.enlace:focus-visible,
+.controles button:focus-visible {
+  outline: 2px solid #872f00;
+  outline-offset: 2px;
+}
+
+.controles button {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.875rem;
+}
+
+.controles button[aria-pressed="true"] {
+  background-color: #fbe9dc;
+  color: #872f00;
+}
+
+.error {
+  flex-basis: 100%;
+  margin: 0;
+  color: #7a1a12;
+}
+
+@media (max-width: 680px) {
+  .enlace { text-align: center; }
+}

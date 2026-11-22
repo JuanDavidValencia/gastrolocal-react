@@ -3,7 +3,7 @@ import { urlSupabase, clavePublicable } from "../lib/supabase.js";
 // El catálogo de restaurantes es público: la tabla solo concede SELECT al rol
 // "anon". Por eso se consulta con fetch y sin el token de la sesión; si se
 // hiciera con el cliente autenticado, la petición podría responder 403.
-export async function listarRestaurantes({ signal } = {}) {
+export async function listarRestaurantes({ signal, restauranteId } = {}) {
   if (!urlSupabase || !clavePublicable) {
     throw new Error(
       "Falta configurar VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en .env.local.",
@@ -14,6 +14,9 @@ export async function listarRestaurantes({ signal } = {}) {
   url.searchParams.set("select", "id,nombre");
   url.searchParams.set("order", "nombre.asc");
   url.searchParams.set("limit", "100");
+  if (restauranteId != null) {
+    url.searchParams.set("id", "eq." + restauranteId);
+  }
 
   const respuesta = await fetch(url, {
     method: "GET",
