@@ -81,9 +81,9 @@ GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reserva
 
 | Tipo | Descripción | Enlace o ruta |
 |---|---|---|
-| Historial remoto | Último commit visible en `main` al comprobar la publicación. | [`dde9a75`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/dde9a75e3c8ca3a0cf20144d24a7f3098c981017) |
-| Commit base | Clases del equipo antes de cambiar el punto de entrada de la 05. | `49f6c24` |
-| Commit de integración | Implementación de las rutas, sesión, detalle y pruebas de reservas. | `50b78cb` en el historial local. |
+| Entrega en `main` | Clases 02 a 05, README y evidencias publicados en GitHub. | [`71dd2cf`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/71dd2cf13e497ba6961b5f2701b63d8a366578fc) |
+| Commit base | Clases del equipo antes de cambiar el punto de entrada de la 05. | [`49f6c24`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/49f6c24461b9543a4f808db8c42c3674ee47b68a) |
+| Commit de integración | Implementación de las rutas, sesión, detalle y pruebas de reservas. | [`50b78cb`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/50b78cb355f5e82735ac4ae3dd7460f2ae93b93f) |
 | Repositorio | Historial de GastroLocal. | [GitHub](https://github.com/JuanDavidValencia/gastrolocal-react) |
 | Pruebas | Instalación reproducible, compilación, dos pruebas de ID y recorrido local. | [Resultados de verificación](evidencias/verificacion-local.md) |
 | Captura | Detalle recargado con sesión ficticia e ID mayor que el entero seguro de JavaScript. | [Detalle de reserva](evidencias/detalle-recargado.jpg) |
@@ -91,7 +91,9 @@ GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reserva
 | Captura | Inicio a 390 px con el modo compacto y la selección de zona. | [Inicio en móvil](evidencias/inicio-movil.jpg) |
 | Demo | URL pública y recorrido con Supabase real. | Pendiente de publicación y verificación. |
 
-El `push` quedó pendiente porque esta sesión no pudo autenticar la escritura en GitHub. El despliegue requiere acceso al alojamiento y un proyecto de Supabase que responda. Falta agregar y verificar el retorno HTTPS a `/acceso`.
+GitHub recibió los tres commits en `main` el 22 de noviembre de 2026. El primer intento desde la terminal quedó bloqueado al abrir el gestor de credenciales de Windows. La subida se completó desde el control de código fuente de VS Code y se verificó en la rama remota.
+
+Queda pendiente desplegar la aplicación, verificar que el proyecto de Supabase responda y autorizar el retorno HTTPS a `/acceso`.
 
 ## 7. Uso de inteligencia artificial
 
@@ -114,6 +116,7 @@ El `push` quedó pendiente porque esta sesión no pudo autenticar la escritura e
 ## 10. Revisión antes de entregar
 
 - [ ] Aportes de los integrantes confirmados y asociados a evidencias.
-- [ ] Enlace público y commit remoto verificados.
+- [x] Commit de entrega verificado en la rama remota.
+- [ ] Enlace público desplegado y probado.
 - [x] Criterios de aceptación y decisiones de integración registrados.
 - [ ] Recorrido del CRUD y prueba con dos cuentas ejecutados en producción.
