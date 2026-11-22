@@ -81,13 +81,17 @@ GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reserva
 
 | Tipo | Descripción | Enlace o ruta |
 |---|---|---|
+| Historial remoto | Último commit visible en `main` al comprobar la publicación. | [`dde9a75`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/dde9a75e3c8ca3a0cf20144d24a7f3098c981017) |
 | Commit base | Clases del equipo antes de cambiar el punto de entrada de la 05. | `49f6c24` |
+| Commit de integración | Implementación de las rutas, sesión, detalle y pruebas de reservas. | `50b78cb` en el historial local. |
 | Repositorio | Historial de GastroLocal. | [GitHub](https://github.com/JuanDavidValencia/gastrolocal-react) |
 | Pruebas | Instalación reproducible, compilación, dos pruebas de ID y recorrido local. | [Resultados de verificación](evidencias/verificacion-local.md) |
 | Captura | Detalle recargado con sesión ficticia e ID mayor que el entero seguro de JavaScript. | [Detalle de reserva](evidencias/detalle-recargado.jpg) |
 | Captura | Alerta visual ante la interrupción de la API local. | [Alerta de consulta](evidencias/alerta-de-consulta.jpg) |
 | Captura | Inicio a 390 px con el modo compacto y la selección de zona. | [Inicio en móvil](evidencias/inicio-movil.jpg) |
 | Demo | URL pública y recorrido con Supabase real. | Pendiente de publicación y verificación. |
+
+El `push` quedó pendiente porque esta sesión no pudo autenticar la escritura en GitHub. El despliegue requiere acceso al alojamiento y un proyecto de Supabase que responda. Falta agregar y verificar el retorno HTTPS a `/acceso`.
 
 ## 7. Uso de inteligencia artificial
 
