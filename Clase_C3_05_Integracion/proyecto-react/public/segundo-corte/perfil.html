@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Sabor&Sal - Mi perfil</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/index-styles.css">
+        <!-- SDK de Supabase (Auth + Data API) -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/auth-ui.js" type="module" defer></script>
+        <script src="js/perfil.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <div><h1><a href="index.html">GastroLocal</a></h1></div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="populares.html">Populares</a>
+                <a href="Favoritos.html">Favoritos</a>
+                <a href="recientes.html">Recientes</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="vistaRestaurante.html">Vista</a>
+            </nav>
+            <div class="sesion-usuario">
+                <a href="perfil.html" id="enlace-perfil" hidden title="Ir a mi perfil">
+                    <img id="foto-perfil" alt="Foto de perfil" width="40" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+                </a>
+                <span id="nombre-usuario"></span>
+                <button id="btn-acceder" type="button" title="Acceder con Google">Acceder</button>
+                <button id="btn-registrarse" type="button" title="Registrarse con Google">Registrarse</button>
+                <button id="btn-cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Aviso para quien todavía no inició sesión -->
+            <p id="perfil-aviso-sesion" class="aviso-sesion" hidden>
+                Para ver y editar tu perfil necesitas iniciar sesión con Google.
+                <a href="index.html">Ir a iniciar sesión</a>
+            </p>
+
+            <section id="mi-perfil" class="panel-perfil" hidden>
+                <div class="perfil-encabezado">
+                    <img id="foto-perfil-grande" class="perfil-avatar" alt="Foto de perfil" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+                    <div>
+                        <h1>Mi perfil</h1>
+                        <p class="perfil-subtitulo">Estos datos se guardan en tu cuenta de GastroLocal.</p>
+                        <p id="estado-perfil" role="status"></p>
+                    </div>
+                </div>
+
+                <div class="perfil-columnas">
+                    <!-- Columna 1: datos personales. Se guardan con PUT. -->
+                    <form id="formulario-perfil" class="form-perfil">
+                        <h2>Datos personales</h2>
+                        <p class="perfil-nota">
+                            El botón guarda <strong>todos</strong> los campos a la vez
+                            (<code>PUT</code>), así que los que no cambies siguen iguales.
+                        </p>
+
+                        <label for="perfil-nombre">Nombre:</label>
+                        <input type="text" id="perfil-nombre" name="nombre" required>
+
+                        <label for="perfil-email">Correo electrónico:</label>
+                        <input type="email" id="perfil-email" name="email" required>
+
+                        <label for="perfil-telefono">Teléfono:</label>
+                        <input type="tel" id="perfil-telefono" name="telefono" placeholder="+57 300 000 0000">
+
+                        <label for="perfil-direccion">Dirección:</label>
+                        <input type="text" id="perfil-direccion" name="direccion" placeholder="Calle y número, ciudad">
+
+                        <button type="submit" id="btn-guardar-perfil">Guardar perfil</button>
+                    </form>
+
+                    <!-- Columna 2: foto de perfil. Se cambia sola con PATCH. -->
+                    <div class="bloque-foto">
+                        <h2>Foto de perfil</h2>
+                        <p class="perfil-nota">
+                            Este botón cambia <strong>solo</strong> la foto
+                            (<code>PATCH</code>) y deja el resto de tus datos intactos.
+                        </p>
+
+                        <img id="vista-previa-foto" class="perfil-avatar" alt="Vista previa de la foto" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+
+                        <label for="perfil-foto">URL de la imagen:</label>
+                        <input type="url" id="perfil-foto" name="foto_url" placeholder="https://...">
+
+                        <div class="perfil-acciones">
+                            <button type="button" id="btn-usar-foto-google">Usar mi foto de Google</button>
+                            <button type="button" id="btn-cambiar-foto">Cambiar solo la foto</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

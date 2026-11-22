@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba de dos anchos · GastroLocal React</title>
+    <style>
+      :root {
+        --primary: #d35400;
+        --secondary: #f9f4ef;
+        --neutral: #2c3e50;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 1.5rem;
+        background-color: var(--neutral);
+        color: var(--secondary);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      .intro {
+        margin: 0 0 1.5rem;
+        max-width: 820px;
+        color: #d5dde5;
+        line-height: 1.5;
+      }
+
+      .prueba {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .marco {
+        overflow: hidden;
+        border: 3px solid var(--primary);
+        border-radius: 12px;
+        background-color: var(--secondary);
+      }
+
+      .encabezado {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        padding: 0.75rem 1rem;
+        background-color: var(--secondary);
+        color: var(--neutral);
+      }
+
+      .encabezado h2 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .datos {
+        margin: 0;
+        color: #52606d;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .lienzo {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--secondary);
+      }
+
+      .lienzo iframe {
+        display: block;
+        border: 0;
+        background-color: var(--secondary);
+      }
+
+      .ancho-1024 .lienzo {
+        width: 819px;
+      }
+
+      .ancho-1024 iframe {
+        transform: scale(0.8);
+        transform-origin: top left;
+      }
+
+      .ancho-390 .lienzo {
+        width: 390px;
+      }
+
+      .pie-prueba {
+        margin: 1.5rem 0 0;
+        color: #d5dde5;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prueba de dos anchos</h1>
+    <p class="intro">
+      La misma aplicación se carga en dos iframes con anchos de viewport
+      distintos. Así se comprueba que las media queries responden: a 1024 px la
+      cuadrícula usa tres columnas y a 390 px pasa a una columna.
+    </p>
+
+    <div class="prueba">
+      <section class="marco ancho-1024" data-ancho="1024">
+        <div class="encabezado">
+          <h2>Escritorio · 1024 px</h2>
+          <p class="datos" data-datos>Midiendo…</p>
+        </div>
+        <div class="lienzo">
+          <iframe
+            src="/"
+            title="Vista de GastroLocal a 1024 píxeles"
+            width="1024"
+            height="900"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="marco ancho-390" data-ancho="390">
+        <div class="encabezado">
+          <h2>Móvil · 390 px</h2>
+          <p class="datos" data-datos>Midiendo…</p>
+        </div>
+        <div class="lienzo">
+          <iframe
+            src="/"
+            title="Vista de GastroLocal a 390 píxeles"
+            width="390"
+            height="900"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+
+    <p class="pie-prueba">
+      Página de verificación del taller. No forma parte de la interfaz
+      principal.
+    </p>
+
+    <script>
+      function medir() {
+        const marcos = [...document.querySelectorAll(".marco")];
+
+        marcos.forEach((marco) => {
+          const iframe = marco.querySelector("iframe");
+          const ventana = iframe.contentWindow;
+          const documento = iframe.contentDocument;
+          const lienzo = marco.querySelector(".lienzo");
+          const datos = marco.querySelector("[data-datos]");
+          const tarjetas = documento.querySelector(".tarjetas");
+          const columnas = tarjetas
+            ? getComputedStyle(tarjetas)
+                .gridTemplateColumns.split(" ")
+                .filter(Boolean).length
+            : 0;
+          const altoContenido = documento.documentElement.scrollHeight;
+          const anchoContenido = documento.documentElement.scrollWidth;
+
+          iframe.height = altoContenido;
+          lienzo.style.height = `${
+            marco.dataset.ancho === "1024" ? altoContenido * 0.8 : altoContenido
+          }px`;
+
+          datos.textContent = `${anchoContenido} px de ancho · ${documento.querySelectorAll(
+            ".tarjeta",
+          ).length} tarjetas · ${columnas} columna(s) · ${
+            anchoContenido > ventana.innerWidth ? "con desborde" : "sin desborde"
+          }`;
+        });
+
+        document.body.dataset.lista = "true";
+      }
+
+      window.addEventListener("load", () => {
+        const iframes = [...document.querySelectorAll("iframe")];
+        let pendientes = iframes.length;
+
+        iframes.forEach((iframe) => {
+          iframe.addEventListener("load", () => {
+            pendientes -= 1;
+            if (pendientes === 0) {
+              medir();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

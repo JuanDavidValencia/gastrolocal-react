@@ -77,8 +77,8 @@ tags:
 
 > [!important] Registrar la IA no reemplaza la explicación técnica. El equipo debe verificar, adaptar y comprender cualquier resultado utilizado.
 
-| Herramienta | Objetivo o pregunta | Qué se utilizó | Cómo se verificó | Qué se modificó |
-|---|---|---|---|---|
+| Herramienta   | Objetivo o pregunta  | Qué se utilizó       | Cómo se verificó  | Qué se modificó     |
+| ------------- | -------------------- | -------------------- | ----------------- | ------------------- |
 | [Herramienta] | [Solicitud resumida] | [Aporte aprovechado] | [Prueba o fuente] | [Adaptación propia] |
 
 Si no se utilizó IA, escribir: **No se utilizó inteligencia artificial en esta sesión.**

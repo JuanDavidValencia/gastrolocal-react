@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Sabor&Sal-Index</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/favoritos-styles.css">
+                <!-- SDK de Supabase (Auth + Data API) -->
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/auth-ui.js" type="module" defer></script>
+        <script src="js/favoritos.js" type="module" defer></script>
+    </head>
+    <body>
+        <header>
+            <div><h1><a href="index.html">GastroLocal</a></h1></div>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="populares.html">Populares</a>
+                <a href="Favoritos.html">Favoritos</a>
+                <a href="recientes.html">Recientes</a>
+                <a href="reservas.html">Reservas</a>
+                <a href="vistaRestaurante.html">Vista</a>
+            </nav>
+            <div class="sesion-usuario">
+                <a href="perfil.html" id="enlace-perfil" hidden title="Ir a mi perfil">
+                    <img id="foto-perfil" alt="Foto de perfil" width="40" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Ccircle%20cx='20'%20cy='16'%20r='7'%20fill='%23E67E22'/%3E%3Cpath%20d='M7%2038a13%2013%200%200%201%2026%200z'%20fill='%23E67E22'/%3E%3C/svg%3E">
+                </a>
+                <span id="nombre-usuario"></span>
+                <button id="btn-acceder" type="button" title="Acceder con Google">Acceder</button>
+                <button id="btn-registrarse" type="button" title="Registrarse con Google">Registrarse</button>
+                <button id="btn-cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+            </div>
+        </header>
+        <section id="banner-inicio">
+                <h1>¿Qué quieres comer hoy?</h1>
+                <div class="seleccion-restaurante">
+                <label for="restaurante">Selecciona un restaurante:</label>
+                <select id="restaurante" name="restaurante" required>
+                    <option value="">Selecciona un restaurante</option>
+                    <option value="restaurante1">Restaurante 1</option>
+                    <option value="restaurante2">Restaurante 2</option>
+                    <option value="restaurante3">Restaurante 3</option>
+                </select>
+            </div>
+            </section>
+        <main>
+            <section id="Recomendaciones">
+                <h2>Tus comidas favoritas</h2>
+
+                <!-- Aviso para quien todavía no inició sesión -->
+                <p id="favoritos-aviso-sesion" class="aviso-sesion">
+                    Para guardar favoritos necesitas iniciar sesión con Google.
+                    <a href="index.html">Ir a iniciar sesión</a>
+                </p>
+
+                <p id="estado-favoritos" role="status"></p>
+
+                <!-- La lista se arma desde la API con los favoritos de la persona -->
+                <div class="tarjetas" id="lista-favoritos"></div>
+            </section>
+        </main>
+    </body>
+</html>
