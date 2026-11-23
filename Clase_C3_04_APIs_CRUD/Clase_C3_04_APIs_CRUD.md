@@ -138,9 +138,9 @@ Referencias verificables:
 
 > [!important] Registrar la IA no reemplaza la explicación técnica. El equipo debe verificar, adaptar y comprender cualquier resultado utilizado.
 
-| Herramienta | Objetivo o pregunta | Qué se utilizó | Cómo se verificó | Qué se modificó |
-| ----------- | ------------------- | -------------- | ---------------- | --------------- |
-| OpenCode (DeepSeek V4.1 Flash Free) | Implementar el CRUD de reservas con Supabase, revisar la guía y resolver los fallos del entorno | Estructura de servicios, hooks y formularios; diagnóstico de los errores de Google Drive; redacción de esta bitácora | `npm run build` sin errores, Vite sin fallos de caché, navegación sin errores de consola y revisión manual de cada archivo | Mensajes en español, nombres y clases alineados con GastroLocal, validaciones y estados adaptados al contrato real de la tabla |
+| Herramienta   | Objetivo o pregunta  | Qué se utilizó       | Cómo se verificó  | Qué se modificó     |
+| ------------- | -------------------- | -------------------- | ----------------- | ------------------- |
+| [Herramienta] | [Solicitud resumida] | [Aporte aprovechado] | [Prueba o fuente] | [Adaptación propia] |
 
 Si no se utilizó IA, escribir: **No se utilizó inteligencia artificial en esta sesión.**
 

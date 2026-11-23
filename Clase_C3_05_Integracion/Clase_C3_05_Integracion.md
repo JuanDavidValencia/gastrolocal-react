@@ -20,23 +20,23 @@ tags:
 |---|---|
 | Tema | Navegación e integración final en React. |
 | Objetivo | Aplicar rutas y sesión compartida al CRUD de reservas, comprobar el recorrido y preparar la publicación. |
-| Proyecto | GastroLocal. |
+| Proyecto | GastroLocal, entrega de `Clase_C3_05_Integracion/`. |
 | Inicio y cierre de la clase | Horarios por registrar. |
 
 ## 2. Participación y responsabilidades
 
-| Integrante | Asistió | Rol de la clase | Responsabilidad asumida | Aporte verificable |
+| Integrante | Asistió | Rol propuesto | Responsabilidad propuesta | Evidencia del proyecto |
 |---|:---:|---|---|---|
-| Juan David Valencia Ospina | Por confirmar | Por registrar | En la clase 04 implementó la conexión y el CRUD que usa esta entrega. | [Participación en la clase 04](../Clase_C3_04_APIs_CRUD/Clase_C3_04_APIs_CRUD.md#2-participación-y-responsabilidades) |
-| María José Ospina | Por confirmar | Por registrar | En la clase 04 preparó pruebas, revisó las políticas RLS y organizó la bitácora. | [Participación en la clase 04](../Clase_C3_04_APIs_CRUD/Clase_C3_04_APIs_CRUD.md#2-participación-y-responsabilidades) |
+| Juan David Valencia Ospina | Por confirmar | Integración técnica | Revisar las rutas públicas, la protección de las vistas de reservas y la sesión compartida. | [Punto de entrada y rutas](proyecto-react/src/App.jsx) y [proveedor de autenticación](proyecto-react/src/context/AuthProvider.jsx). |
+| María José Ospina | Por confirmar | Verificación funcional | Ejecutar las pruebas de identificadores y comprobar los mensajes del detalle cuando el ID es inválido o la reserva no está disponible. | [Pruebas de ID](proyecto-react/src/services/idReserva.test.js) y [vista de detalle](proyecto-react/src/views/DetalleReserva.jsx). |
 
-Queda pendiente confirmar los aportes individuales de la clase 05 antes de la sustentación.
+La asistencia y los aportes individuales de la clase 05 quedan por confirmar.
 
 ## 3. Reto aplicado al proyecto
 
 ### Funcionalidad trabajada
 
-GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reservas y Detalle de reserva. La sesión de Google se comparte en Context. El CRUD de la clase 04 mantiene la validación del formulario, el filtro remoto, la búsqueda local y la lectura después de cada escritura.
+En `proyecto-react/`, React Router organiza Inicio, Populares, Acceso, Mis reservas y Detalle de reserva. Context comparte la sesión de Google entre estas vistas. El CRUD de Supabase conserva la validación del formulario, el filtro remoto, la búsqueda local y la lectura después de cada escritura.
 
 ### Criterios de aceptación
 
@@ -53,10 +53,11 @@ GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reserva
 - [Punto de entrada y rutas](proyecto-react/src/App.jsx). Se reemplazó la selección por hash y se protegieron las rutas de reservas.
 - [Proveedor de autenticación](proyecto-react/src/context/AuthProvider.jsx). Escucha la sesión del cliente compartido y mantiene Google con PKCE y cierre local.
 - [CSS Module de la cabecera](proyecto-react/src/components/Header.module.css). El estado activo incluye el detalle y el modo compacto se guarda por origen.
+- [Estilos globales](proyecto-react/src/styles/styles.css). El color de los enlaces pasó de `var(--primary)` a `#994000` para mejorar el contraste.
 - [Servicio de reservas](proyecto-react/src/services/reservas.js) y [detalle](proyecto-react/src/views/DetalleReserva.jsx). El ID viaja como texto y se cancela la consulta al cambiar de fila o cuenta.
 - [Ubicación](proyecto-react/src/components/Ubicacion.jsx). El navegador pide permiso al pulsar el botón. Las coordenadas aproximadas se muestran durante la visita y se puede elegir una zona manualmente.
 - [Prueba del ID](proyecto-react/src/services/idReserva.test.js). Verifica claves positivas `bigint` de PostgreSQL.
-- [Configuración de Vercel](proyecto-react/vercel.json) y [README principal](../README.md). Documentan la ejecución y la publicación.
+- [Configuración de Vercel](proyecto-react/vercel.json). Dirige las rutas internas a `index.html`.
 
 ## 4. Decisiones técnicas
 
@@ -81,21 +82,23 @@ GastroLocal usa React Router para separar Inicio, Populares, Acceso, Mis reserva
 
 | Tipo | Descripción | Enlace o ruta |
 |---|---|---|
-| Entrega en `main` | Clases 02 a 05, README y evidencias publicados en GitHub. | [`71dd2cf`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/71dd2cf13e497ba6961b5f2701b63d8a366578fc) |
-| Commit base | Clases del equipo antes de cambiar el punto de entrada de la 05. | [`49f6c24`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/49f6c24461b9543a4f808db8c42c3674ee47b68a) |
+| Carpeta en `main` | Aplicación, bitácora y evidencias de la clase 05 en GitHub. | [`Clase_C3_05_Integracion`](https://github.com/JuanDavidValencia/gastrolocal-react/tree/main/Clase_C3_05_Integracion) |
 | Commit de integración | Implementación de las rutas, sesión, detalle y pruebas de reservas. | [`50b78cb`](https://github.com/JuanDavidValencia/gastrolocal-react/commit/50b78cb355f5e82735ac4ae3dd7460f2ae93b93f) |
-| Repositorio | Historial de GastroLocal. | [GitHub](https://github.com/JuanDavidValencia/gastrolocal-react) |
 | Pruebas | Instalación reproducible, compilación, dos pruebas de ID y recorrido local. | [Resultados de verificación](evidencias/verificacion-local.md) |
 | Captura | Detalle recargado con sesión ficticia e ID mayor que el entero seguro de JavaScript. | [Detalle de reserva](evidencias/detalle-recargado.jpg) |
 | Captura | Alerta visual ante la interrupción de la API local. | [Alerta de consulta](evidencias/alerta-de-consulta.jpg) |
 | Captura | Inicio a 390 px con el modo compacto y la selección de zona. | [Inicio en móvil](evidencias/inicio-movil.jpg) |
 | Demo | URL pública y recorrido con Supabase real. | Pendiente de publicación y verificación. |
 
-GitHub recibió los tres commits en `main` el 22 de noviembre de 2026. El primer intento desde la terminal quedó bloqueado al abrir el gestor de credenciales de Windows. La subida se completó desde el control de código fuente de VS Code y se verificó en la rama remota.
-
-Queda pendiente desplegar la aplicación, verificar que el proyecto de Supabase responda y autorizar el retorno HTTPS a `/acceso`.
+Queda pendiente desplegar la aplicación de esta carpeta, verificar la respuesta de Supabase y autorizar el retorno HTTPS a `/acceso`.
 
 ## 7. Uso de inteligencia artificial
+
+> [!important] Registrar la IA no reemplaza la explicación técnica. El equipo debe verificar, adaptar y comprender cualquier resultado utilizado.
+
+| Herramienta   | Objetivo o pregunta  | Qué se utilizó       | Cómo se verificó  | Qué se modificó     |
+| ------------- | -------------------- | -------------------- | ----------------- | ------------------- |
+| [Herramienta] | [Solicitud resumida] | [Aporte aprovechado] | [Prueba o fuente] | [Adaptación propia] |
 
 ## 8. Defensa técnica y retroalimentación
 
@@ -116,7 +119,7 @@ Queda pendiente desplegar la aplicación, verificar que el proyecto de Supabase 
 ## 10. Revisión antes de entregar
 
 - [ ] Aportes de los integrantes confirmados y asociados a evidencias.
-- [x] Commit de entrega verificado en la rama remota.
+- [x] Commit de integración de la clase 05 verificado en `main`.
 - [ ] Enlace público desplegado y probado.
 - [x] Criterios de aceptación y decisiones de integración registrados.
 - [ ] Recorrido del CRUD y prueba con dos cuentas ejecutados en producción.
