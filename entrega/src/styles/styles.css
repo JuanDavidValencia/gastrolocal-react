@@ -1,0 +1,469 @@
+
+:root {
+  --primary: #d35400;
+  --secondary: #f9f4ef;
+  --tertiary: #e67e22;
+  --neutral: #2c3e50;
+  --superficie: #ffffff;
+  --texto-suave: #52606d;
+  --borde-suave: #eadfd5;
+  --sombra: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--secondary);
+  color: var(--neutral);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: #994000;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.salto-contenido {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background-color: var(--neutral);
+  color: var(--secondary);
+  font-weight: 700;
+  transform: translateY(-120%);
+  transition: transform 0.2s ease;
+}
+
+.salto-contenido:focus {
+  transform: translateY(0);
+}
+
+/* ------------------------------
+   Cabecera
+   ------------------------------ */
+
+.header-principal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.marca a {
+  color: var(--primary);
+  font-family: "Quicksand", "Segoe UI", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.marca a:hover {
+  color: var(--tertiary);
+  transform: scale(1.04);
+}
+
+/* ------------------------------
+   Contenido principal
+   ------------------------------ */
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+#banner-inicio {
+  padding: 4rem 2rem;
+  border-radius: 14px;
+  background-image: linear-gradient(
+      rgba(249, 244, 239, 0.84),
+      rgba(249, 244, 239, 0.84)
+    ),
+    url("https://i.pinimg.com/1200x/17/d8/95/17d89508fe4845c8656e9c930125bae7.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+
+.banner-etiqueta {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#banner-inicio h1 {
+  margin: 0.35rem 0 0;
+  color: var(--neutral);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.banner-texto {
+  max-width: 620px;
+  margin: 0.75rem auto 1.5rem;
+  color: var(--texto-suave);
+}
+
+#buscador {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 100px;
+  outline: none;
+  background-color: var(--secondary);
+  color: var(--neutral);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#buscador:focus {
+  border-color: var(--tertiary);
+  box-shadow: 0 0 8px rgba(211, 84, 0, 0.4);
+}
+
+/* ------------------------------
+   Filtros por categoría
+   ------------------------------ */
+
+#categorias {
+  padding: 1.5rem 0 0.5rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.chip {
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--primary);
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--neutral);
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chip:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.chip[aria-pressed="true"] {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+/* ------------------------------
+   Sección de restaurantes
+   ------------------------------ */
+
+#populares {
+  padding: 1.5rem 0 0;
+}
+
+.seccion-encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.seccion-encabezado h2 {
+  margin: 0.15rem 0 0;
+  color: var(--primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.seccion-contador {
+  margin: 0;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  background-color: var(--superficie);
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: var(--sombra);
+}
+
+/* ------------------------------
+   Tarjetas (grid de tres columnas)
+   ------------------------------ */
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  background-color: var(--superficie);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(44, 62, 80, 0.14);
+}
+
+.tarjeta-contenido {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.tarjeta-categoria {
+  align-self: flex-start;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  background-color: #fbe9dc;
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tarjeta h3 {
+  margin: 0.2rem 0 0;
+  color: var(--neutral);
+  font-size: 1.35rem;
+}
+
+.tarjeta-descripcion {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 200px;
+  margin: 0.6rem 0;
+  border-radius: 8px;
+  background-color: var(--secondary);
+  object-fit: cover;
+}
+
+.tarjeta-datos {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.tarjeta-datos div {
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-datos dt {
+  color: #7f8c8d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tarjeta-datos dd {
+  margin: 0.1rem 0 0;
+  color: var(--neutral);
+  font-weight: 800;
+}
+
+.tarjeta-accion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--borde-suave);
+}
+
+.tarjeta-accion span {
+  color: var(--tertiary);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.tarjeta button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 100px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.tarjeta button:hover {
+  background-color: var(--tertiary);
+}
+
+/* ------------------------------
+   Estados y pie
+   ------------------------------ */
+
+.vacio {
+  padding: 2rem;
+  border: 2px dashed var(--borde-suave);
+  border-radius: 12px;
+  background-color: var(--superficie);
+  color: var(--neutral);
+  text-align: center;
+}
+
+.aviso-pedido {
+  margin: 1.5rem 0 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  background-color: var(--superficie);
+  font-weight: 600;
+}
+
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  padding: 1.25rem 1rem 2rem;
+  border-top: 1px solid var(--borde-suave);
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.pie p {
+  margin: 0;
+}
+
+.pie a {
+  font-weight: 700;
+}
+
+/* ------------------------------
+   Responsive: dos anchos comprobados
+   1024 px (tableta) y 390 px (móvil)
+   ------------------------------ */
+
+@media (max-width: 900px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #banner-inicio {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-principal {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .marca {
+    justify-content: center;
+  }
+
+  .marca a {
+    font-size: 1.9rem;
+  }
+
+  .header-principal nav {
+    width: 100%;
+  }
+
+  #banner-inicio {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .seccion-encabezado {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tarjetas {
+    grid-template-columns: 1fr;
+  }
+
+  .pie {
+    flex-direction: column;
+  }
+}

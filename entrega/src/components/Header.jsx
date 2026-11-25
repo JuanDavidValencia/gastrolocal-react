@@ -1,0 +1,12 @@
+import { useState } from "react";
+import { Link, NavLink } from "react-router";
+import { useAuth } from "../context/useAuth.js";
+import { useMenuCompacto } from "../hooks/useMenuCompacto.js";
+import styles from "./Header.module.css";
+const enlaces = [["/", "Inicio"], ["/restaurantes", "Restaurantes"], ["/populares", "Populares"], ["/favoritos", "Favoritos"], ["/recientes", "Recientes"], ["/reservas", "Reservas"], ["/vista", "Vista"]];
+export default function Header() {
+  const { sesion, salir } = useAuth(); const { compacto, alternar } = useMenuCompacto();
+  const [abierto, setAbierto] = useState(false); const [pendiente, setPendiente] = useState(false); const [error, setError] = useState("");
+  async function cerrar() { setPendiente(true); setError(""); try { await salir(); } catch { setError("No se pudo cerrar la sesión. Intenta de nuevo."); } finally { setPendiente(false); } }
+  return <header className={styles.header}><div className={styles.top}><Link className={styles.brand} to="/" aria-label="GastroLocal, inicio"><span className={styles.logo} aria-hidden="true">g.</span>Gastro<span>Local</span></Link><span className={styles.location}>ARMENIA, QUINDÍO</span><div className={styles.actions}><button className={styles.compactButton} aria-pressed={compacto} onClick={alternar}>Menú compacto</button>{sesion ? <><NavLink className={styles.profile} to="/perfil">Mi perfil <span aria-hidden="true">↗</span></NavLink><button className={styles.signout} onClick={cerrar} disabled={pendiente}>{pendiente ? "Saliendo…" : "Salir"}</button></> : <Link className={styles.access} to="/acceso">Acceder <span aria-hidden="true">↗</span></Link>}<button className={styles.mobileToggle} aria-label="Abrir menú de navegación" aria-expanded={abierto} aria-controls="menu-principal" onClick={() => setAbierto(!abierto)}>☰</button></div></div><nav id="menu-principal" aria-label="Navegación principal" className={`${styles.nav} ${compacto ? styles.compacto : ""} ${abierto ? styles.open : ""}`}>{enlaces.map(([to, texto]) => <NavLink key={to} end={to === "/"} to={to} onClick={() => setAbierto(false)} className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ""}`}>{texto}</NavLink>)}<span className={styles.navNote}>Buenos lugares, mejores momentos.</span></nav>{error && <p role="alert" className={styles.error}>{error}</p>}</header>;
+}

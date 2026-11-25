@@ -1,0 +1,14 @@
+import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router";
+import { useCatalogo } from "../context/CatalogoContext.jsx";
+import { useRecientes } from "../context/RecientesContext.jsx";
+import { EstadoCatalogo, Vacio, BotonFavorito, GridRestaurantes } from "../components/CatalogoUI.jsx";
+import { Imagen } from "../components/Imagen.jsx";
+export default function DetalleRestaurante({ selector = false }) {
+  const catalogo = useCatalogo(); const { id } = useParams(); const navegar = useNavigate(); const { visitar } = useRecientes();
+  const restaurante = selector ? catalogo.restaurantes[0] : catalogo.restaurantes.find(r => String(r.id) === id);
+  const actual = restaurante?.id;
+  useEffect(() => { if (actual) visitar(actual); }, [actual, visitar]);
+  const relacionados = restaurante ? catalogo.restaurantes.filter(r => r.categoria === restaurante.categoria && r.id !== actual).slice(0, 3) : [];
+  return <EstadoCatalogo {...catalogo}>{!restaurante ? <Vacio titulo="Restaurante no disponible" texto="Este lugar no está en el catálogo actual."><Link className="boton-primario" to="/restaurantes">Ver catálogo</Link></Vacio> : <><div className="gl-breadcrumb"><Link to="/restaurantes">Restaurantes</Link><span aria-hidden="true">/</span><span>{restaurante.nombre}</span></div>{selector && <div className="gl-view-select"><label htmlFor="elegir-vista">¿Qué restaurante quieres conocer?</label><select id="elegir-vista" value={actual} onChange={e => navegar(`/restaurantes/${e.target.value}`)}>{catalogo.restaurantes.map(r => <option key={r.id} value={r.id}>{r.nombre}</option>)}</select></div>}<section className="gl-detail"><div className="gl-detail-image"><Imagen src={restaurante.imagen} alt={restaurante.nombre} eager /></div><div className="gl-detail-copy"><span className="gl-eyebrow">{restaurante.categoria}</span><h1>{restaurante.nombre}</h1><span className="gl-place">ARMENIA · QUINDÍO</span><p>{restaurante.descripcion}</p><div className="gl-detail-actions"><Link className="boton-primario" to={`/reservas?restaurante=${restaurante.id}`}>Reservar una mesa ↗</Link><BotonFavorito restaurante={restaurante} conTexto /></div><div className="gl-detail-note"><strong>Una mesa, un buen momento.</strong><p>Elige la fecha, la hora y cuántas personas te acompañan. Podrás consultar el estado de tu reserva desde tu cuenta.</p></div></div></section>{relacionados.length > 0 && <section className="gl-section"><div className="gl-section-heading"><div><span className="gl-eyebrow">SIGUE EL ANTOJO</span><h2>También te puede gustar</h2></div></div><GridRestaurantes restaurantes={relacionados} /></section>}</>}</EstadoCatalogo>;
+}
