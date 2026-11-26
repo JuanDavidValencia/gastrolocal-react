@@ -9,7 +9,7 @@ Aplicación React para explorar restaurantes y administrar reservas personales. 
 - Carpeta de la versión final: `entrega/`.
 - Documentación principal: [docs/bitacora.md](docs/bitacora.md).
 - Repositorio del segundo corte: pendiente de confirmar con el equipo.
-- URL de producción: pendiente de publicación.
+- URL de producción: https://gastrolocal-react.vercel.app
 - Commit de entrega: pendiente de crear después de validar esta versión. Obtener el SHA con `git rev-parse HEAD` desde el repositorio y registrarlo al enviar los enlaces.
 
 ## Instalación y ejecución
